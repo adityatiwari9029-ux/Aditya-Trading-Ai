@@ -161,7 +161,7 @@
                 <div style="font-size: 11px; color: #8f92a1; margin-top: 2px;">Capture chart using camera</div>
             </div>
         </label>
-        <input type="file" id="cameraInput" accept="image/*" capture="environment" onchange="startAnalysis()">
+        <input type="file" id="cameraInput" accept="image/*" capture="environment">
 
         <!-- OPTION 2: Choose from Gallery -->
         <label for="galleryInput" class="option-btn">
@@ -171,10 +171,10 @@
                 <div style="font-size: 11px; color: #8f92a1; margin-top: 2px;">Select existing screenshot</div>
             </div>
         </label>
-        <input type="file" id="galleryInput" accept="image/*" onchange="startAnalysis()">
+        <input type="file" id="galleryInput" accept="image/*">
     </div>
 
-    <!-- STEP 2: LOADING SCREEN (12 Seconds Total Delay) -->
+    <!-- STEP 2: LOADING SCREEN -->
     <div id="screen-loading" class="card">
         <h3>🤖 Processing...</h3>
         <div class="loader-text" id="loadingStatus">Connecting to secure neural network...</div>
@@ -197,12 +197,20 @@
 </div>
 
 <script>
-    function startAnalysis() {
-        const cameraInput = document.getElementById('cameraInput');
-        const galleryInput = document.getElementById('galleryInput');
-        
-        if (cameraInput.files.length === 0 && galleryInput.files.length === 0) return;
+    // Robust event listeners jo file select hote hi turant trigger honge
+    document.getElementById('cameraInput').addEventListener('change', function() {
+        if (this.files.length > 0) {
+            startAnalysis();
+        }
+    });
 
+    document.getElementById('galleryInput').addEventListener('change', function() {
+        if (this.files.length > 0) {
+            startAnalysis();
+        }
+    });
+
+    function startAnalysis() {
         document.getElementById('screen-upload').style.display = 'none';
         document.getElementById('screen-loading').style.display = 'block';
 
