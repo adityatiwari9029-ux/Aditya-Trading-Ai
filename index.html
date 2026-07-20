@@ -137,7 +137,6 @@
 <body>
 
 <div class="container">
-    <!-- HEADER -->
     <div class="header">
         <div class="header-left">
             <img src="logo.png" alt="Logo" class="bot-logo">
@@ -149,11 +148,9 @@
         <div style="font-size: 12px; background: #222436; padding: 4px 8px; border-radius: 6px;">OTC</div>
     </div>
 
-    <!-- STEP 1: UPLOAD SCREEN -->
     <div id="screen-upload" class="card">
         <div style="font-size: 14px; margin-bottom: 15px; color: #b8b9c5;">AUD/CAD OTC (+92%)</div>
         
-        <!-- OPTION 1: Direct Camera -->
         <label for="cameraInput" class="option-btn">
             <span class="option-icon">📸</span>
             <div>
@@ -163,7 +160,6 @@
         </label>
         <input type="file" id="cameraInput" accept="image/*" capture="environment">
 
-        <!-- OPTION 2: Choose from Gallery -->
         <label for="galleryInput" class="option-btn">
             <span class="option-icon">📂</span>
             <div>
@@ -174,13 +170,11 @@
         <input type="file" id="galleryInput" accept="image/*">
     </div>
 
-    <!-- STEP 2: LOADING SCREEN -->
     <div id="screen-loading" class="card">
         <h3>🤖 Processing...</h3>
         <div class="loader-text" id="loadingStatus">Connecting to secure neural network...</div>
     </div>
 
-    <!-- STEP 3: RESULT SCREEN -->
     <div id="screen-result" class="card">
         <div style="font-size: 13px; color: #8f92a1; text-transform: uppercase; letter-spacing: 1px;">Forecast Ready</div>
         
@@ -197,7 +191,6 @@
 </div>
 
 <script>
-    // Robust event listeners jo file select hote hi turant trigger honge
     document.getElementById('cameraInput').addEventListener('change', function() {
         if (this.files.length > 0) {
             startAnalysis();
